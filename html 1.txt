@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeVerse AI 2.0 | Smart Learning</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="loader">
+<h1 style="color:#6366f1;">🌸 CodeVerse AI</h1>
+<p>Preparing your Smart Multilingual Workspace...</p>
+</div>
+
+<nav>
+<div style="font-size:24px;font-weight:bold;">🚀 CodeVerse AI 2.0</div>
+<button onclick="toggleMode()">🌙 Dark Mode</button>
+</nav>
+
+<div id="sidebar">
+<a onclick="openPage('home')">🏠 Home</a>
+<a onclick="openPage('dashboard')">📊 Dashboard</a>
+<a onclick="openPage('ai_assistant')">🤖 Meet Codey</a>
+<a onclick="openPage('focus_timer')">⏱️ Focus Timer</a>
+<a onclick="openPage('code')">💻 Coding Lab</a>
+<a onclick="openPage('burnout')">🧠 Stress Analyzer</a>
+<a onclick="logout()" style="color:#ef4444;">🚪 Logout</a>
+</div>
+
+<div id="main">
+
+<div id="login" class="section" style="display:block">
+<div class="panel">
+<h1>Welcome to the Future!</h1>
+<p>Apna naam likhiye shuru karne ke liye:</p>
+<input id="userName" placeholder="Your Name..."><br><br>
+<button onclick="startApp()">Enter CodeVerse</button>
+</div>
+</div>
+
+<div id="home" class="section">
+<div class="panel">
+<h1>Namaste, <span id="display_name"></span>!</h1>
+<p>CodeVerse AI ab Hinglish aur English dono samajhta hai.</p>
+</div>
+</div>
+
+<div id="dashboard" class="section">
+<div class="panel">
+<h2>Your Performance</h2>
+<canvas id="studyChart"></canvas>
+</div>
+</div>
+
+<div id="ai_assistant" class="section">
+<div class="panel">
+
+<div id="codey_avatar">🤖</div>
+
+<h2>Codey AI</h2>
+
+<div id="ai_chat" class="chatbox">
+<div class="bot-msg"><b>Codey:</b> Hello! Main Codey hoon.</div>
+</div>
+
+<div style="margin-top:15px;display:flex;gap:10px;">
+<input id="ai_input" style="flex:1;" placeholder="Ask something">
+<button onclick="askCodey()">Ask</button>
+</div>
+
+</div>
+</div>
+
+<div id="focus_timer" class="section">
+<div class="panel">
+
+<h2>⏱️ Focus Pomodoro</h2>
+
+<div id="timer_display">25:00</div>
+
+<button onclick="toggleTimer()" id="timerBtn">Start</button>
+<button onclick="resetTimer()">Reset</button>
+
+</div>
+</div>
+
+<div id="code" class="section">
+<div class="panel">
+<h2>💻 Live Compiler</h2>
+<iframe src="https://onecompiler.com" style="width:100%;height:500px;border:none;border-radius:10px;"></iframe>
+</div>
+</div>
+
+<div id="burnout" class="section">
+<div class="panel">
+
+<h2>🧠 Stress Analyzer</h2>
+
+<input id="in_study" type="number" placeholder="Study Hours">
+<input id="in_sleep" type="number" placeholder="Sleep Hours">
+
+<button onclick="runAnalysis()">Analyze</button>
+
+<h3 id="stress_result"></h3>
+
+</div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

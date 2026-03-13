@@ -1,0 +1,143 @@
+window.onload=()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none"
+},2000)
+}
+
+let timerInterval
+let timeLeft=25*60
+let isRunning=false
+
+function startApp(){
+let name=document.getElementById("userName").value
+if(!name)return alert("Enter name")
+
+document.getElementById("display_name").innerText=name
+document.getElementById("sidebar").style.display="block"
+
+openPage("home")
+
+initCharts()
+}
+
+function openPage(id){
+
+document.querySelectorAll(".section").forEach(s=>s.style.display="none")
+
+document.getElementById(id).style.display="block"
+
+}
+
+function toggleMode(){
+
+document.body.classList.toggle("dark")
+
+}
+
+function askCodey(){
+
+let input=document.getElementById("ai_input")
+let chat=document.getElementById("ai_chat")
+
+if(!input.value)return
+
+chat.innerHTML+=`<div class="user-msg">${input.value}</div>`
+
+setTimeout(()=>{
+
+chat.innerHTML+=`<div class="bot-msg"><b>Codey:</b> Keep learning coding every day 🚀</div>`
+
+chat.scrollTop=chat.scrollHeight
+
+},1000)
+
+input.value=""
+
+}
+
+function toggleTimer(){
+
+if(isRunning){
+
+clearInterval(timerInterval)
+
+}else{
+
+timerInterval=setInterval(()=>{
+
+timeLeft--
+
+updateTimer()
+
+},1000)
+
+}
+
+isRunning=!isRunning
+
+}
+
+function resetTimer(){
+
+clearInterval(timerInterval)
+
+timeLeft=25*60
+
+updateTimer()
+
+}
+
+function updateTimer(){
+
+let m=Math.floor(timeLeft/60)
+
+let s=timeLeft%60
+
+document.getElementById("timer_display").innerText=`${m}:${s<10?"0":""}${s}`
+
+}
+
+function initCharts(){
+
+new Chart(document.getElementById("studyChart"),{
+
+type:"line",
+
+data:{
+
+labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+
+datasets:[{
+
+label:"Study Hours",
+
+data:[5,7,4,8,6,3,5],
+
+borderColor:"#6366f1"
+
+}]
+
+}
+
+})
+
+}
+
+function runAnalysis(){
+
+let study=document.getElementById("in_study").value
+let sleep=document.getElementById("in_sleep").value
+
+let score=(study*10)-(sleep*5)
+
+let status=score>40?"Take a Break":"You are doing great"
+
+document.getElementById("stress_result").innerText=status
+
+}
+
+function logout(){
+
+location.reload()
+
+}
